@@ -11,7 +11,7 @@ import {
   Param,
 } from '@nestjs/common';
 import { Response } from 'express';
-import { CreateUserDto, UpdateUserDto } from './dto';
+import { CreateUserDto, LoginDto, UpdateUserDto } from './dto';
 
 @Controller('user')
 export class UserController {
@@ -34,10 +34,47 @@ export class UserController {
     }
   }
 
+  @Post('/signin')
+  async signin(@Res() res: Response, @Body() loginInfo: LoginDto) {
+    try {
+      const result = await this.userService.signin(loginInfo);
+      return res.status(HttpStatus.OK).json({
+        status: HttpStatus.OK,
+        message: 'success',
+        data: result,
+      });
+    } catch (e) {
+      return res.status(HttpStatus.BAD_REQUEST).json({
+        status: HttpStatus.BAD_REQUEST,
+        message: e.message,
+      });
+    }
+  }
+
   @Get('/')
   async getUserList(@Res() res: Response) {
     try {
       const result = await this.userService.getUserList();
+      return res.status(HttpStatus.OK).json({
+        status: HttpStatus.OK,
+        message: 'success',
+        data: result,
+      });
+    } catch (e) {
+      return res.status(HttpStatus.BAD_REQUEST).json({
+        status: HttpStatus.BAD_REQUEST,
+        message: e.message,
+      });
+    }
+  }
+
+  @Get('/addr/:near_addr')
+  async getUserByAddr(
+    @Res() res: Response,
+    @Param('near_addr') near_addr: string,
+  ) {
+    try {
+      const result = await this.userService.getUserByAddr(near_addr);
       return res.status(HttpStatus.OK).json({
         status: HttpStatus.OK,
         message: 'success',
