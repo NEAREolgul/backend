@@ -29,6 +29,15 @@ export class Content {
   @Column({ default: false })
   is_sell: boolean;
 
+  @Column({ default: false })
+  is_nft: boolean;
+
+  @Column()
+  content_width: number;
+
+  @Column()
+  content_height: number;
+
   @Column()
   content_paint: string;
 

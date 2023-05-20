@@ -1,4 +1,10 @@
-import { IsOptional, IsString, IsNotEmpty, IsBoolean, IsNumber } from 'class-validator';
+import {
+  IsOptional,
+  IsString,
+  IsNotEmpty,
+  IsBoolean,
+  IsNumber,
+} from 'class-validator';
 
 export class UpdateContentDto {
   @IsString()
@@ -24,6 +30,14 @@ export class UpdateContentDto {
   @IsBoolean()
   @IsOptional()
   is_sell?: boolean;
+
+  @IsNumber()
+  @IsOptional()
+  content_width?: number;
+
+  @IsNumber()
+  @IsOptional()
+  content_height?: number;
 
   @IsString()
   @IsOptional()
