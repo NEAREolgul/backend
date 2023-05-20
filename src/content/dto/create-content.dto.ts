@@ -8,7 +8,7 @@ export class CreateContentDto {
   @IsString()
   @IsNotEmpty()
   user_id: string;
-  
+
   @IsString()
   @IsNotEmpty()
   content_title: string;

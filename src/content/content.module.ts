@@ -9,4 +9,4 @@ import { Content } from 'src/entity';
   controllers: [ContentController],
   providers: [ContentService]
 })
-export class ContentModule {}
+export class ContentModule { }

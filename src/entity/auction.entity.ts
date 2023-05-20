@@ -4,6 +4,7 @@ import {
   JoinColumn,
   ManyToOne,
   PrimaryColumn,
+  CreateDateColumn,
 } from 'typeorm';
 import { Content } from './content.entity';
 
@@ -21,10 +22,10 @@ export class Auction {
   @Column()
   auction_desc: string;
 
-  @Column()
+  @CreateDateColumn()
   auction_start: Date;
 
-  @Column()
+  @CreateDateColumn()
   auction_deadline: Date;
 
   @Column()

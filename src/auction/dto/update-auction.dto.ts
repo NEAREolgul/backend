@@ -13,14 +13,6 @@ export class UpdateAuctionDto {
   @IsOptional()
   auction_desc?: string;
 
-  @IsDate()
-  @IsOptional()
-  auction_start?: Date;
-
-  @IsDate()
-  @IsOptional()
-  auction_deadline: Date;
-
   @IsString()
   @IsOptional()
   min_price?: string;

@@ -1,23 +1,23 @@
 import { IsOptional, IsString, IsNotEmpty, IsBoolean } from 'class-validator';
 
-export class UpdateUserDto {
+export class UpdateProposalDto {
   @IsString()
   @IsNotEmpty()
   user_id: string;
 
   @IsString()
+  @IsNotEmpty()
+  content_id: string;
+
+  @IsString()
   @IsOptional()
-  user_nm?: string;
+  proposal_msg?: string;
   
   @IsString()
   @IsOptional()
-  user_pw?: string;
-
-  @IsString()
-  @IsOptional()
-  near_addr?: string;
+  proposal_price?: string;
 
   @IsBoolean()
   @IsOptional()
-  is_artist?: string;
+  is_accept?: boolean;
 }
