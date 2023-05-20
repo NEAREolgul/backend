@@ -3,7 +3,7 @@ services:
     mariadb:
         container_name: NEAREolgul
         ports:
-            - '3308:3306'
+            - '3306:3306'
         restart: always
         volumes:
             - ./mysqldata/conf.d:/etc/mysql/conf.d
