@@ -6,12 +6,22 @@ export class UpdateAuctionDto {
   auction_id: string;
 
   @IsString()
+  @IsNotEmpty()
+  content_id: string;
+
+  @IsString()
   @IsOptional()
   auction_title?: string;
 
   @IsString()
   @IsOptional()
   auction_desc?: string;
+
+  @IsOptional()
+  auction_start?: Date;
+
+  @IsOptional()
+  auction_deadline?: Date;
 
   @IsString()
   @IsOptional()

@@ -17,6 +17,12 @@ export class CreateAuctionDto {
   @IsOptional()
   auction_desc?: string;
 
+  @IsNotEmpty()
+  auction_start: Date;
+
+  @IsNotEmpty()
+  auction_deadline: Date;
+
   @IsString()
   @IsNotEmpty()
   min_price: string;

@@ -69,7 +69,7 @@ export class ProposalController {
         }
     }
 
-    @Delete('/:proposal_id')
+    @Delete('/:user_id/:content_id')
     async deleteProposal(
         @Res() res: Response,
         @Param('user_id') user_id: string,
@@ -93,7 +93,7 @@ export class ProposalController {
         }
     }
 
-    @Get('/:proposal_id')
+    @Get('/:user_id/:content_id')
     async getProposalInfo(
         @Res() res: Response,
         @Param('user_id') user_id: string,
