@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `NEAREolgul`.`t_content` (
   `content_paint` TEXT NULL,
   `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
   `modified_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+  `is_nft` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`content_id`),
   INDEX `fk_t_content_t_user_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_t_content_t_user`
