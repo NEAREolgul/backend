@@ -11,7 +11,7 @@ import { User } from './user.entity';
 import { Auction } from './auction.entity';
 
 
-@Entity({ name: 't_proposal' })
+@Entity({ name: 't_bid' })
 export class Bid {
   @PrimaryColumn()
   user_id: string;

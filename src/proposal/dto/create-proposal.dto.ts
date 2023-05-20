@@ -1,23 +1,23 @@
-import { IsNotEmpty, IsOptional, IsString,IsBoolean } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString, IsBoolean } from 'class-validator';
 
-export class CreateUserDto {
+export class CreateProposalDto {
   @IsString()
   @IsNotEmpty()
   user_id: string;
 
   @IsString()
   @IsNotEmpty()
-  user_nm?: string;
-  
-  @IsString()
-  @IsNotEmpty()
-  user_pw?: string;
+  content_id: string;
 
   @IsString()
   @IsOptional()
-  near_addr?: string;
+  proposal_msg?: string;
+  
+  @IsString()
+  @IsOptional()
+  proposal_price?: string;
 
   @IsBoolean()
   @IsOptional()
-  is_artist?: string;
+  is_accept?: boolean;
 }

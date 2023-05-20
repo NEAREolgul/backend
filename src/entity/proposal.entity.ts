@@ -10,7 +10,6 @@ import {
 import { User } from './user.entity';
 import { Content } from './content.entity';
 
-
 @Entity({ name: 't_proposal' })
 export class Proposal {
   @PrimaryColumn()
@@ -30,6 +29,9 @@ export class Proposal {
 
   @UpdateDateColumn()
   modified_at: Date;
+
+  @Column({ default: false })
+  is_accept: boolean;
 
   @ManyToOne(() => User, (user) => user.user_id, {
     onUpdate: 'CASCADE',

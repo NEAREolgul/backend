@@ -51,7 +51,7 @@ export class BidController {
         }
     }
 
-    @Put()
+    @Put('/')
     async updateBid(@Res() res: Response, @Body() bidInfo: UpdateBidDto) {
         try {
             const result = await this.bidService.updateBid(bidInfo);
@@ -68,7 +68,7 @@ export class BidController {
         }
     }
 
-    @Delete('/:bid_id')
+    @Delete('/:user_id/:auction_id')
     async deleteBid(
         @Res() res: Response,
         @Param('user_id') user_id: string,
@@ -92,7 +92,7 @@ export class BidController {
         }
     }
 
-    @Get('/:bid_id')
+    @Get('/:user_id/:auction_id')
     async getBidInfo(
         @Res() res: Response,
         @Param('user_id') user_id: string,

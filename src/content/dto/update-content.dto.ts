@@ -7,11 +7,11 @@ export class UpdateContentDto {
 
   @IsString()
   @IsOptional()
-  user_id: string;
+  user_id?: string;
 
   @IsString()
   @IsOptional()
-  content_title: string;
+  content_title?: string;
 
   @IsString()
   @IsOptional()

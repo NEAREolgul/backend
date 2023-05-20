@@ -9,7 +9,7 @@ import { CreateUserDto, UpdateUserDto } from './dto';
 export class UserService {
   constructor(
     @InjectRepository(User) private userRepository: Repository<User>
-  ) {}
+  ) { }
 
   /**
    * 회원 정보 생성
