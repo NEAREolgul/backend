@@ -66,6 +66,7 @@ CREATE TABLE IF NOT EXISTS `NEAREolgul`.`t_auction` (
   `auction_deadline` DATETIME NOT NULL,
   `min_price` VARCHAR(45) NOT NULL,
   `purchase_price` VARCHAR(45) NOT NULL,
+  `contract_address` VARCHAR(255) NULL,
   PRIMARY KEY (`auction_id`),
   INDEX `fk_t_auction_t_content1_idx` (`content_id` ASC) VISIBLE,
   CONSTRAINT `fk_t_auction_t_content1`
@@ -112,6 +113,7 @@ CREATE TABLE IF NOT EXISTS `NEAREolgul`.`t_proposal` (
   `proposal_price` VARCHAR(45) NULL,
   `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP(),
   `modified_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP(),
+  `is_accept` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`user_id`, `content_id`),
   INDEX `fk_t_user_has_t_content_t_content1_idx` (`content_id` ASC) VISIBLE,
   INDEX `fk_t_user_has_t_content_t_user1_idx` (`user_id` ASC) VISIBLE,
