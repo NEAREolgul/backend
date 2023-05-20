@@ -3,13 +3,13 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { EntityBadRequestException } from 'src/config/service.exception';
 import { User } from 'src/entity';
 import { Repository } from 'typeorm';
-import { CreateUserDto, UpdateUserDto } from './dto';
+import { CreateUserDto, LoginDto, UpdateUserDto } from './dto';
 
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(User) private userRepository: Repository<User>
-  ) { }
+    @InjectRepository(User) private userRepository: Repository<User>,
+  ) {}
 
   /**
    * 회원 정보 생성
@@ -31,6 +31,27 @@ export class UserService {
 
       const test = this.userRepository.create(userInfo);
       const result = await this.userRepository.save(test);
+      return result;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  async signin(loginInfo: LoginDto) {
+    try {
+      const { user_id, user_pw, near_addr } = loginInfo;
+      if (near_addr) {
+        const result = await this.userRepository.findOneOrFail({
+          where: { near_addr },
+        });
+        delete result.user_pw;
+        return result;
+      }
+      const result = await this.userRepository.findOneOrFail({
+        where: { user_id, user_pw },
+      });
+
+      delete result.user_pw;
       return result;
     } catch (e) {
       throw e;
@@ -59,10 +80,7 @@ export class UserService {
   async updateUser(userInfo: UpdateUserDto) {
     try {
       const { user_id, ...updateInfo } = userInfo;
-      const result = await this.userRepository.update(
-        { user_id },
-        updateInfo
-      );
+      const result = await this.userRepository.update({ user_id }, updateInfo);
       return result;
     } catch (e) {
       throw e;
@@ -79,9 +97,22 @@ export class UserService {
     try {
       await this.userRepository.findOneOrFail({ where: { user_id } });
 
-      const result = await this.userRepository.delete(
-        { user_id },
-      );
+      const result = await this.userRepository.delete({ user_id });
+
+      return result;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  async getUserByAddr(near_addr: string) {
+    try {
+      const result = await this.userRepository.findOneOrFail({
+        where: {
+          near_addr,
+        },
+      });
+      delete result.user_pw;
 
       return result;
     } catch (e) {
